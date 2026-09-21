@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/header.svg" width="100%" alt="abhishek kokadwar. data pipelines, backend, the boundaries between systems" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/header.svg" width="100%" alt="abhishek kokadwar. data pipelines, backend, the boundaries between systems" />
 
 <br/>
 
@@ -12,7 +12,7 @@
 
 <br/>
 
-[![Resume](https://img.shields.io/badge/download%20résumé-1f6feb?style=for-the-badge&logo=readdotcv&logoColor=white&labelColor=0d1117)](https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/abhishek-kokadwar-resume.pdf)
+[![Resume](https://img.shields.io/badge/download%20résumé-1f6feb?style=for-the-badge&logo=readdotcv&logoColor=white&labelColor=0d1117)](https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/abhishek-kokadwar-resume.pdf)
 
 </div>
 
@@ -26,9 +26,9 @@ So now I spend most of my time on **data in motion** and on **trust boundaries**
 
 The habit I'm trying to build is measuring the thing rather than assuming it. It's easy to write "real-time" in a README. It's harder to say what the watermark is, what happens to the packet that arrives four minutes late, and what the number looks like when you go back and check it.
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/h-exp.svg" width="100%" alt="Experience" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-exp.svg" width="100%" alt="Experience" />
 
 Two internships, remote, sole developer on both. Both shipped to a live domain — which is a different kind of pressure than a repo nobody deploys.
 
@@ -80,13 +80,13 @@ First time a design decision of mine had users attached to it. That's the part t
 </tr>
 </table>
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/h-active.svg" width="100%" alt="Currently building" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-active.svg" width="100%" alt="Currently building" />
 
 ### GridPulse — real-time IoT energy streaming
 
-<sub>`kafka` · `spark structured streaming` · `pyspark` · `postgres` · `parquet` · `docker` · `streamlit` · <a href="https://github.com/Abhishek86798/GridPulse">repo →</a></sub>
+<sub>`kafka` · `spark structured streaming` · `pyspark` · `postgres` · `parquet` · `docker` · `streamlit` · <a href="https://github.com/abhishekKokadwar/GridPulse">repo →</a></sub>
 
 Live electrical telemetry from **42 smart sub-meters** across **19 campus buildings**, ingested, aggregated and served.
 
@@ -94,7 +94,7 @@ The pipeline is deliberately boring in shape and specific in its choices. A Pyth
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/pipeline.svg" width="100%" alt="Meters into Kafka into Spark Structured Streaming, then forking into a hot path to Postgres and a cold path to date-partitioned Parquet, with a Streamlit dashboard reading the hot path." />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/pipeline.svg" width="100%" alt="Meters into Kafka into Spark Structured Streaming, then forking into a hot path to Postgres and a cold path to date-partitioned Parquet, with a Streamlit dashboard reading the hot path." />
 
 </div>
 
@@ -104,25 +104,25 @@ Storage splits two ways, and the split is the design. Hot path: aggregates land 
 
 ### CIDRA — CI debugging and repair agent
 
-<sub>`python` · `langgraph` · `claude api` · `docker` · `pydantic` · <a href="https://github.com/Abhishek86798/CIDRA">repo →</a></sub>
+<sub>`python` · `langgraph` · `claude api` · `docker` · `pydantic` · <a href="https://github.com/abhishekKokadwar/CIDRA">repo →</a></sub>
 
 A **LangGraph** pipeline that reads a failing GitHub Actions run, works out why, and then — the part that matters — reproduces the failure in a sandboxed Docker container and verifies the fix actually passes before proposing it. Model output is Pydantic-validated with bounded retry, so a malformed response is a retry rather than a crash.
 
 100% Tier-1/2 diagnosis accuracy across 53+ tests, with **zero false "verified" claims**. The second number is the one I care about: an agent that confidently proposes a broken fix is worse than one that says it doesn't know.
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/h-done.svg" width="100%" alt="Shipped" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-done.svg" width="100%" alt="Shipped" />
 
 ### MCP Zero-Trust Gateway — kernel confinement for agent tools
 
-<sub>`python` · `fastapi` · `seccomp-bpf` · `landlock` · `docker` · <a href="https://pypi.org/project/mcp-ztgateway/">PyPI →</a> · <a href="https://github.com/Abhishek86798/MCP_Zero-Trust_Gateway_BTP">repo →</a> · <a href="https://drive.google.com/drive/folders/1UxaBiMxdcX8KH6rdeaSiJ0nu2eWcyXNQ?usp=sharing">evaluation →</a></sub>
+<sub>`python` · `fastapi` · `seccomp-bpf` · `landlock` · `docker` · <a href="https://pypi.org/project/mcp-ztgateway/">PyPI →</a> · <a href="https://github.com/abhishekKokadwar/MCP_Zero-Trust_Gateway_BTP">repo →</a> · <a href="https://drive.google.com/drive/folders/1UxaBiMxdcX8KH6rdeaSiJ0nu2eWcyXNQ?usp=sharing">evaluation →</a></sub>
 
 An MCP tool server describes its own capabilities. That description is a claim, not a fact, and the gateway treats it that way: **declare, verify, confine.**
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/gateway.svg" width="100%" alt="Declared capabilities compared against syscalls observed under strace in a locked-down container, compiled into a per-tool seccomp-BPF filter that denies anything outside the declaration at the kernel boundary." />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/gateway.svg" width="100%" alt="Declared capabilities compared against syscalls observed under strace in a locked-down container, compiled into a per-tool seccomp-BPF filter that denies anything outside the declaration at the kernel boundary." />
 
 </div>
 
@@ -140,15 +140,15 @@ Built for the Flipkart Gridlock hackathon, aimed at Bangalore Traffic Police: gi
 
 The modelling problem was more about the join than the model. Violation records, geospatial zones and time-of-day buckets have to line up before anything downstream means much, and most of the work was getting that feature table honest — deduplicating locations that appear under three spellings, and resisting the urge to read a hotspot into what is really just a place with more reporting. Served as a REST inference API with a Next.js dashboard on top, so the prediction lands somewhere a non-technical user can act on it.
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/h-dsa.svg" width="100%" alt="DSA" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-dsa.svg" width="100%" alt="DSA" />
 
 The most consistent thing I do — 306 active days, and the reason a cost-per-operation instinct shows up in everything above.
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/dsa.svg" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/dsa.svg" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
 
 <br/>
 
@@ -156,9 +156,9 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 </div>
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/h-oss.svg" width="100%" alt="Open source" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-oss.svg" width="100%" alt="Open source" />
 
 Five merged upstream, across three CNCF projects. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
 
@@ -232,9 +232,9 @@ Two lines. The i18n CLI could not run because its shebang was not first in the f
 
 Also contributing through **GSSoC**, and a published inference model on [HuggingFace Hub](https://huggingface.co/abhishek1005). See [all merged PRs](https://github.com/pulls?q=is%3Apr+author%3AabhishekKokadwar+is%3Amerged).
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/h-stack.svg" width="100%" alt="Stack" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-stack.svg" width="100%" alt="Stack" />
 
 <div align="center">
 
@@ -260,13 +260,13 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 </div>
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/h-lately.svg" width="100%" alt="Lately" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-lately.svg" width="100%" alt="Lately" />
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/github.svg" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/github.svg" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
 
 <br/><br/>
 
@@ -275,8 +275,8 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 <br/><br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/output/github-contribution-grid-snake-dark.svg" />
-  <img width="100%" src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/output/github-contribution-grid-snake.svg" alt="contribution snake" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/output/github-contribution-grid-snake-dark.svg" />
+  <img width="100%" src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/output/github-contribution-grid-snake.svg" alt="contribution snake" />
 </picture>
 
 <br/><br/>
@@ -285,6 +285,6 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 <br/>
 
-<sub>if something here looks wrong, it probably is. <a href="https://github.com/Abhishek86798/Abhishek86798/issues">tell me</a></sub>
+<sub>if something here looks wrong, it probably is. <a href="https://github.com/abhishekKokadwar/abhishekKokadwar/issues">tell me</a></sub>
 
 </div>
