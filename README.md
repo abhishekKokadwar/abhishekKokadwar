@@ -152,7 +152,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <br/>
 
-<sub>across <a href="https://leetcode.com/u/abhiii1005_/">LeetCode</a> (top 17%), <a href="https://www.geeksforgeeks.org/profile/abhi_iiitm">GeeksforGeeks</a>, <a href="https://www.naukri.com/code360/profile/1d0eab26-a66e-4d90-99ed-46328d444eab">Code360</a> (4x monthly topper) and CodeChef · rating and difficulty split fetched live · totals tracked on <a href="https://codolio.com/profile/abhishek_1005">Codolio</a></sub>
+<sub>across <a href="https://leetcode.com/u/abhiii1005_/">LeetCode</a>, <a href="https://www.geeksforgeeks.org/profile/abhi_iiitm">GeeksforGeeks</a>, <a href="https://www.naukri.com/code360/profile/1d0eab26-a66e-4d90-99ed-46328d444eab">Code360</a> (4x monthly topper) and CodeChef · rating and difficulty split fetched live · totals tracked on <a href="https://codolio.com/profile/abhishek_1005">Codolio</a></sub>
 
 </div>
 
@@ -270,7 +270,7 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 <br/><br/>
 
-<img width="92%" src="https://streak-stats.demolab.com?user=Abhishek86798&hide_border=true&background=0d1117&ring=58a6ff&fire=58a6ff&currStreakLabel=58a6ff&sideLabels=8b949e&dates=6e7681" alt="contribution streak" />
+<img width="92%" src="https://streak-stats.demolab.com?user=abhishekKokadwar&hide_border=true&background=0d1117&ring=58a6ff&fire=58a6ff&currStreakLabel=58a6ff&sideLabels=8b949e&dates=6e7681" alt="contribution streak" />
 
 <br/><br/>
 
