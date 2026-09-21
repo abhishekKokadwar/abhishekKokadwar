@@ -120,9 +120,13 @@ def main():
 
     try:
         repos = all_repos(token)
-        merged = search_count(f"type:pr author:{USER} is:merged", token)
-        prs = search_count(f"type:pr author:{USER}", token)
-        issues = search_count(f"type:issue author:{USER}", token)
+        # is:public keeps the count identical whoever runs this: the
+        # workflow's repo-scoped token sees fewer private results than a
+        # personal token, and a card that changes by runner is worse than
+        # one that undercounts consistently.
+        merged = search_count(f"type:pr author:{USER} is:merged is:public", token)
+        prs = search_count(f"type:pr author:{USER} is:public", token)
+        issues = search_count(f"type:issue author:{USER} is:public", token)
     except (urllib.error.URLError, KeyError, TypeError, ValueError) as e:
         # Keep the committed card rather than publishing zeroes.
         print(f"github fetch failed ({e}); keeping existing github.svg")
