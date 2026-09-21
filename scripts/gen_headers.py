@@ -36,7 +36,7 @@ HEADERS = [
     ("h-active", "currently building",  "cidra · gridpulse"),
     ("h-done",   "shipped",             "finished, measured, left alone"),
     ("h-exp",    "experience",          "two internships, sole developer"),
-    ("h-oss",    "open source",         "early days"),
+    ("h-oss",    "open source",         "5 merged \u00b7 3 cncf projects"),
     ("h-stack",  "stack",               "what i reach for"),
     ("h-dsa",    "dsa",                 "859 solved · 306 active days"),
     ("h-lately", "lately",              "contribution activity"),

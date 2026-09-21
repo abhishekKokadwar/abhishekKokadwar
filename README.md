@@ -160,15 +160,77 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/h-oss.svg" width="100%" alt="Open source" />
 
-I'm early here. One merged PR upstream, not twenty, and I'd rather say that than pad the section.
+Five merged upstream, across three CNCF projects. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
 
-**[kubeflow/trainer #3960](https://github.com/kubeflow/trainer/pull/3960)** — merged into the CNCF Kubeflow project's Kubernetes-native distributed ML training orchestrator.
+<table>
+<tr>
+<td width="30%" valign="top">
 
-<!-- TODO: 2-3 sentences on what this PR actually changed and why it wasn't obvious.
-     The specific bug is far more interesting than the fact that it merged.
-     Reviewers read this line and nothing else in the section. -->
+**[kubeflow/trainer #3960](https://github.com/kubeflow/trainer/pull/3960)**
+<br/><sub>validation read live state, reconciliation read a snapshot</sub>
 
-Also contributing through **GSSoC**, and a published inference model on [HuggingFace Hub](https://huggingface.co/abhishek1005). More to come — the goal for this section next year is that it's the longest one on the page.
+</td>
+<td valign="top">
+
+`ValidateObjects` always fetched the **live** TrainingRuntime, while `NewObjects` reconciles from the per-TrainJob snapshot introduced by KEP-2599. So editing a runtime retroactively broke validation for TrainJobs already reconciled against the old one: remove a volumeMount and resuming a paused job is rejected, even though reconciliation would have used the still-valid snapshot. Delete the runtime — now legal, since KEP-2599 dropped the finalizers — and the job is stuck permanently, reconciling fine but never passing admission. Fixed by resolving updates from the snapshot, falling back to live only for pre-snapshot jobs.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/mcp-server #237](https://github.com/kubeflow/mcp-server/pull/237)**
+<br/><sub>a blocked response still advertised a next step</sub>
+
+</td>
+<td valign="top">
+
+The server set `_meta.next` even when the response reported blockers, so a client could be told what to do next by a call that had not actually succeeded. Withholding it makes the failure legible to the agent instead of inviting it to continue.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/mcp-server #236](https://github.com/kubeflow/mcp-server/pull/236)**
+<br/><sub>unvalidated runtime names in platform tools</sub>
+
+</td>
+<td valign="top">
+
+Runtime names reached the platform runtime tools unvalidated. 188 lines, nearly all of it the validation and its tests.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[karmada-io/dashboard #700](https://github.com/karmada-io/dashboard/pull/700)**
+<br/><sub>TypeScript strictness in member-cluster services</sub>
+
+</td>
+<td valign="top">
+
+Tightened types across 7 files in the member-cluster service layer — the kind of change that finds bugs by refusing to compile rather than by failing at runtime.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[karmada-io/dashboard #702](https://github.com/karmada-io/dashboard/pull/702)**
+<br/><sub>a shebang on the wrong line</sub>
+
+</td>
+<td valign="top">
+
+Two lines. The i18n CLI could not run because its shebang was not first in the file. Favourite kind of fix: the bug is obvious the moment you see it, and invisible until then.
+
+</td>
+</tr>
+</table>
+
+Also contributing through **GSSoC**, and a published inference model on [HuggingFace Hub](https://huggingface.co/abhishek1005). See [all merged PRs](https://github.com/pulls?q=is%3Apr+author%3AabhishekKokadwar+is%3Amerged).
 
 <img src="https://raw.githubusercontent.com/Abhishek86798/Abhishek86798/main/assets/rule.svg" width="100%" alt="" />
 
