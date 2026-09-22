@@ -304,7 +304,7 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 <br/><br/>
 
-<sub>B.Tech IT + MBA · IIITM Gwalior · graduating 2028</sub>
+<sub>Integrated Dual Degree (B.Tech IT + MBA) · IIITM Gwalior · graduating 2028</sub>
 
 <br/>
 

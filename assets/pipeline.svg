@@ -1,4 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .flow { animation-duration: 9s; animation-timing-function: cubic-bezier(.4,0,.3,1); animation-iteration-count: infinite }
+    .fa { animation-name: fa }
+    .fb { animation-name: fb; animation-delay: 1.4s }
+    @keyframes fa {
+      0%   { transform: translateX(0); opacity: 0 }
+      4%   { opacity: 1 }
+      38%  { transform: translateX(62px); opacity: 1 }
+      44%, 100% { transform: translateX(62px); opacity: 0 }
+    }
+    @keyframes fb {
+      0%   { transform: translateX(0); opacity: 0 }
+      4%   { opacity: 1 }
+      38%  { transform: translateX(62px); opacity: 1 }
+      44%, 100% { transform: translateX(62px); opacity: 0 }
+    }
+    .wmglow { animation: wmglow 9s ease-in-out infinite }
+    @keyframes wmglow {
+      0%, 40%   { opacity: .3 }
+      48%, 62%  { opacity: 1 }
+      76%, 100% { opacity: .3 }
+    }
+    .hotdot { animation: hotdot 9s cubic-bezier(.4,0,.3,1) infinite; animation-delay: 4.6s }
+    @keyframes hotdot {
+      0%   { transform: translateY(0); opacity: 0 }
+      6%   { opacity: 1 }
+      88%  { transform: translateY(144px); opacity: 1 }
+      94%, 100% { transform: translateY(144px); opacity: 0 }
+    }
+    .colddot { animation: colddot 9s cubic-bezier(.4,0,.3,1) infinite; animation-delay: 5.2s }
+    @keyframes colddot {
+      0%   { transform: translate(0,0); opacity: 0 }
+      6%   { opacity: 1 }
+      88%  { transform: translate(44px,123px); opacity: 1 }
+      94%, 100% { transform: translate(44px,123px); opacity: 0 }
+    }
+    .anomalybox { animation: anomalybox 9s ease-in-out infinite }
+    @keyframes anomalybox {
+      0%, 62%  { stroke: #26303c }
+      70%, 84% { stroke: #d29922 }
+      92%, 100% { stroke: #26303c }
+    }
+    .anomalytext { animation: anomalytext 9s linear infinite }
+    @keyframes anomalytext { 0%, 68% { opacity: 0 } 72%, 86% { opacity: 1 } 90%, 100% { opacity: 0 } }
+    @media (prefers-reduced-motion: reduce) {
+      .flow, .wmglow, .hotdot, .colddot, .anomalybox, .anomalytext { animation: none; opacity: 1 }
+    }
+  </style>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0 0 L10 5 L0 10 z" fill="#30363d"/>
@@ -23,44 +71,53 @@
 
   <rect x="40" y="112" width="150" height="66" rx="8" fill="#0f151d" stroke="#26303c"/>
   <text x="115" y="140" fill="#e6edf3" font-size="14" font-weight="700" text-anchor="middle">42 meters</text>
-  <text x="115" y="160" fill="#6e7681" font-size="12" text-anchor="middle">19 buildings</text>
+  <text x="115" y="160" fill="#6e7681" font-size="12" text-anchor="middle">simulated, campus-wide</text>
 
   <line x1="190" y1="145" x2="252" y2="145" stroke="#30363d" stroke-width="1.5" marker-end="url(#ar)"/>
+  <circle class="flow fa" cx="190" cy="145" r="3.5" fill="#58a6ff"/>
 
   <rect x="258" y="112" width="164" height="66" rx="8" fill="#0f151d" stroke="#26303c"/>
   <text x="340" y="140" fill="#e6edf3" font-size="14" font-weight="700" text-anchor="middle">kafka</text>
   <text x="340" y="160" fill="#6e7681" font-size="12" text-anchor="middle">kraft &#183; keyed by meter</text>
 
   <line x1="422" y1="145" x2="484" y2="145" stroke="#30363d" stroke-width="1.5" marker-end="url(#ar)"/>
+  <circle class="flow fb" cx="422" cy="145" r="3.5" fill="#58a6ff"/>
 
   <rect x="490" y="112" width="186" height="66" rx="8" fill="#0f151d" stroke="#26303c"/>
   <text x="583" y="140" fill="#e6edf3" font-size="14" font-weight="700" text-anchor="middle">spark streaming</text>
   <text x="583" y="160" fill="#6e7681" font-size="12" text-anchor="middle">5m window &#183; 1m slide</text>
 
-  <line x1="583" y1="178" x2="583" y2="206" stroke="#26303c" stroke-dasharray="3 3"/>
-  <text x="583" y="222" fill="#6e7681" font-size="12" text-anchor="middle">2-minute event-time watermark</text>
+  <line class="wmglow" x1="583" y1="178" x2="583" y2="206" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text class="wmglow" x="583" y="222" fill="#8b949e" font-size="12" text-anchor="middle">2-minute event-time watermark</text>
 
   <path d="M676 145 L716 145 L716 268" fill="none" stroke="#30363d" stroke-width="1.5"/>
   <path d="M716 145 L760 145" fill="none" stroke="#30363d" stroke-width="1.5" marker-end="url(#ar)"/>
   <path d="M716 268 L760 268" fill="none" stroke="#30363d" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+  <circle class="hotdot" cx="716" cy="145" r="3.5" fill="#58a6ff"/>
+  <circle class="colddot" cx="716" cy="145" r="3.5" fill="#a371f7"/>
+
+  <rect class="anomalybox" x="490" y="235" width="186" height="52" rx="8" fill="#0f151d" stroke="#26303c"/>
+  <text x="583" y="257" fill="#e6edf3" font-size="13" font-weight="700" text-anchor="middle">isolation forest</text>
+  <text class="anomalytext" x="583" y="275" fill="#d29922" font-size="11" text-anchor="middle">anomaly flagged</text>
+  <line x1="583" y1="178" x2="583" y2="235" fill="none" stroke="#26303c" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#ar)"/>
 
   <rect x="766" y="112" width="194" height="66" rx="8" fill="#0f151d" stroke="#1f6feb"/>
-  <text x="863" y="140" fill="#e6edf3" font-size="14" font-weight="700" text-anchor="middle">postgres</text>
-  <text x="863" y="160" fill="#6e7681" font-size="12" text-anchor="middle">hot &#183; batch 5k / 15s</text>
+  <text x="863" y="140" fill="#e6edf3" font-size="14" font-weight="700" text-anchor="middle">duckdb</text>
+  <text x="863" y="160" fill="#6e7681" font-size="12" text-anchor="middle">hot &#183; queryable</text>
 
   <rect x="766" y="235" width="194" height="66" rx="8" fill="#0f151d" stroke="#26303c"/>
-  <text x="863" y="263" fill="#e6edf3" font-size="14" font-weight="700" text-anchor="middle">parquet</text>
-  <text x="863" y="283" fill="#6e7681" font-size="12" text-anchor="middle">cold &#183; y/m/d partitions</text>
+  <text x="863" y="263" fill="#e6edf3" font-size="14" font-weight="700" text-anchor="middle">delta lake</text>
+  <text x="863" y="283" fill="#6e7681" font-size="12" text-anchor="middle">cold &#183; full history</text>
 
   <path d="M863 178 L863 322" fill="none" stroke="#30363d" stroke-width="1.5" marker-end="url(#ar)"/>
   <rect x="766" y="328" width="194" height="52" rx="8" fill="#0f151d" stroke="#26303c"/>
-  <text x="863" y="359" fill="#e6edf3" font-size="13" text-anchor="middle">streamlit &#183; 3s fragments</text>
+  <text x="863" y="359" fill="#e6edf3" font-size="13" text-anchor="middle">peak-shaving alert</text>
 
-  <text x="40" y="268" fill="#8b949e" font-size="13">the split is the whole point:</text>
-  <text x="40" y="292" fill="#6e7681" font-size="13">freshness is bought with batch size,</text>
-  <text x="40" y="314" fill="#6e7681" font-size="13">history is bought with partitioning,</text>
-  <text x="40" y="336" fill="#6e7681" font-size="13">and neither one pays for the other.</text>
+  <text x="40" y="268" fill="#8b949e" font-size="13">24h load forecast at 11.5% MAPE</text>
+  <text x="40" y="292" fill="#6e7681" font-size="13">is accurate enough to fire the alert</text>
+  <text x="40" y="314" fill="#6e7681" font-size="13">before the peak, not after it &#8212;</text>
+  <text x="40" y="336" fill="#6e7681" font-size="13">which is the only time it's useful.</text>
 
   <circle cx="46" cy="379" r="4" fill="#3fb950"/>
-  <text x="60" y="384" fill="#8b949e" font-size="13">sub-minute meter-to-queryable-table latency</text>
+  <text x="60" y="384" fill="#8b949e" font-size="13">isolation forest + z-score cross-check on every window</text>
 </svg>
