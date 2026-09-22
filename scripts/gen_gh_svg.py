@@ -20,7 +20,11 @@ import urllib.parse
 import urllib.request
 
 OUT = pathlib.Path(__file__).resolve().parent.parent / "assets" / "github.svg"
-USER = "abhishekKokadwar"  # API login; the repo URL still uses the old name
+USER = "abhishekKokadwar"
+
+# Owners whose repos are not "upstream": this account, and the collaborator
+# repos where a merge is self-approved rather than reviewed by a project.
+UPSTREAM_EXCLUDE = f"-user:abhishekKokadwar -user:nabrahma -repo:driverCore/TruthLens"
 
 
 def get(url, token):
@@ -63,10 +67,10 @@ TEMPLATE = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 176" widt
   <line x1="36" y1="58" x2="864" y2="58" stroke="#1f2733"/>
 
   <text x="36" y="100" fill="#58a6ff" font-size="30" font-weight="700">{merged}</text>
-  <text x="36" y="120" fill="#6e7681" font-size="11">merged PRs</text>
+  <text x="36" y="120" fill="#6e7681" font-size="11">merged upstream</text>
 
   <text x="212" y="100" fill="#e6edf3" font-size="30" font-weight="700">{prs}</text>
-  <text x="212" y="120" fill="#6e7681" font-size="11">PRs opened</text>
+  <text x="212" y="120" fill="#6e7681" font-size="11">PRs opened upstream</text>
 
   <text x="388" y="100" fill="#e6edf3" font-size="30" font-weight="700">{issues}</text>
   <text x="388" y="120" fill="#6e7681" font-size="11">issues filed</text>
@@ -124,8 +128,13 @@ def main():
         # workflow's repo-scoped token sees fewer private results than a
         # personal token, and a card that changes by runner is worse than
         # one that undercounts consistently.
-        merged = search_count(f"type:pr author:{USER} is:merged is:public", token)
-        prs = search_count(f"type:pr author:{USER} is:public", token)
+        #
+        # UPSTREAM_EXCLUDE drops self-merges. A PR you opened and merged on
+        # your own repo is not an open-source contribution, and counting it
+        # as one is the kind of inflated number this whole page avoids.
+        upstream = f"type:pr author:{USER} is:merged is:public {UPSTREAM_EXCLUDE}"
+        merged = search_count(upstream, token)
+        prs = search_count(f"type:pr author:{USER} is:public {UPSTREAM_EXCLUDE}", token)
         issues = search_count(f"type:issue author:{USER} is:public", token)
     except (urllib.error.URLError, KeyError, TypeError, ValueError) as e:
         # Keep the committed card rather than publishing zeroes.

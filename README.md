@@ -20,11 +20,11 @@
 
 Hi, I'm Abhishek.
 
-I started with web apps, because that's where you can see what you built. Two internships in, the interesting part had quietly moved somewhere else: not the page, but the schema underneath it, and the question of how many round-trips it took to fill.
+I actually started out building web apps, mostly because you can see what you built right away. But a couple of internships in, I noticed the part I actually cared about had quietly moved somewhere else. Not the page itself, but the schema underneath it, and how many round trips it took just to fill in a form.
 
-So now I spend most of my time on **data in motion** and on **trust boundaries** — the two places where a system is most likely to be confidently wrong. A dashboard that renders perfectly off a stale aggregate. A tool server that says it only needs to read one file.
+So these days I spend most of my time on two things: data in motion, and trust boundaries. Basically the two places where a system is most likely to be confidently wrong without anyone noticing. A dashboard that renders perfectly off a stale aggregate. A tool server that swears it only needs to read one file.
 
-The habit I'm trying to build is measuring the thing rather than assuming it. It's easy to write "real-time" in a README. It's harder to say what the watermark is, what happens to the packet that arrives four minutes late, and what the number looks like when you go back and check it.
+The habit I keep trying to build is measuring things instead of assuming them. Anyone can write "real-time" in a readme. It's a lot harder to say what your watermark actually is, what happens when a packet shows up four minutes late, or what your number looks like when you go back and actually check it.
 
 <img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
@@ -44,7 +44,6 @@ Two internships, remote, sole developer on both. Both shipped to a live domain �
 <br/><sub>`cloudinary` · `vercel`</sub>
 
 <sub>↗ <a href="https://www.tridentpublicschool.com/">tridentpublicschool.com</a></sub>
-<br/><sub>↗ <a href="https://saaro-creations.vercel.app/">saaro-creations</a></sub>
 
 </td>
 <td valign="top">
@@ -67,6 +66,8 @@ Recurring infra came to **$0/month**. A planned Supabase tier replaced with Sani
 <sub>`next.js` · `postgresql`</sub>
 <br/><sub>`firebase` · `row-level security`</sub>
 
+<sub>↗ <a href="https://saaro-creations.vercel.app/">saaro-creations</a></sub>
+
 </td>
 <td valign="top">
 
@@ -84,24 +85,6 @@ First time a design decision of mine had users attached to it. That's the part t
 
 <img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-active.svg" width="100%" alt="Currently building" />
 
-### GridPulse — real-time IoT energy streaming
-
-<sub>`kafka` · `spark structured streaming` · `pyspark` · `postgres` · `parquet` · `docker` · `streamlit` · <a href="https://github.com/abhishekKokadwar/GridPulse">repo →</a></sub>
-
-Live electrical telemetry from **42 smart sub-meters** across **19 campus buildings**, ingested, aggregated and served.
-
-The pipeline is deliberately boring in shape and specific in its choices. A Python simulator produces per-meter readings into a containerized **Kafka** cluster in KRaft mode, partitioned by meter ID so a single meter's events stay strictly ordered while different meters process in parallel. A **Spark Structured Streaming** job consumes the raw topic under a 5-minute sliding window with a 1-minute slide and a 2-minute event-time watermark — because sensor packets do not arrive in the order they were measured, and pretending otherwise gives you clean-looking numbers that are wrong.
-
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/pipeline.svg" width="100%" alt="Meters into Kafka into Spark Structured Streaming, then forking into a hot path to Postgres and a cold path to date-partitioned Parquet, with a Streamlit dashboard reading the hot path." />
-
-</div>
-
-Storage splits two ways, and the split is the design. Hot path: aggregates land in **PostgreSQL** through tuned JDBC micro-batches — batch size 5,000, 15-second trigger — a deliberate trade of connection overhead against freshness that holds sub-minute latency from meter to queryable table. Cold path: raw telemetry writes to **Parquet partitioned by year/month/day**, so the full history stays cheap to scan later instead of bloating the operational store. A **Streamlit** dashboard reads the hot path with fragment-scoped polling, refreshing live aggregates every 3 seconds without re-rendering the layout around them.
-
----
-
 ### CIDRA — CI debugging and repair agent
 
 <sub>`python` · `langgraph` · `claude api` · `docker` · `pydantic` · <a href="https://github.com/abhishekKokadwar/CIDRA">repo →</a></sub>
@@ -113,6 +96,24 @@ A **LangGraph** pipeline that reads a failing GitHub Actions run, works out why,
 <img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
 <img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-done.svg" width="100%" alt="Shipped" />
+
+### GridPulse — real-time campus energy monitoring
+
+<sub>`kafka` · `spark` · `duckdb` · `delta lake` · `next.js` · <a href="https://gridpulse-campus.vercel.app">live →</a> · <a href="https://github.com/abhishekKokadwar/GridPulse">repo →</a></sub>
+
+Telemetry from **42 simulated sub-meters** streamed through Kafka into Spark 5-minute windows, with PostgreSQL for the hot path and Delta Lake for history.
+
+The part worth defending is what happens after the aggregate lands. Anomalies are flagged by Isolation Forest crossed with a z-score, and 24-hour load is forecast at **11.5% MAPE** — accurate enough to fire a peak-shaving alert before the peak, which is the only time such an alert is worth anything.
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/pipeline.svg" width="100%" alt="Meters into Kafka into Spark Structured Streaming, then forking into a hot path to Postgres and a cold path to date-partitioned storage, with a dashboard reading the hot path." />
+
+</div>
+
+A 5-minute sliding window with a 1-minute slide and a **2-minute event-time watermark**, because sensor packets do not arrive in the order they were measured and pretending otherwise gives you clean-looking numbers that are wrong. The storage split is the design: freshness is bought with batch size, history with partitioning, and neither pays for the other.
+
+---
 
 ### MCP Zero-Trust Gateway — kernel confinement for agent tools
 
@@ -132,13 +133,35 @@ The part I'd defend in an interview isn't the enforcement, it's the evaluation. 
 
 ---
 
-### Trinetra — parking violation prediction
+### Trinetra — parking enforcement intelligence, Bengaluru
 
-<sub>`python` · `scikit-learn` · `fastapi` · `next.js` · `vercel` · <a href="https://gridlockl-fugg.vercel.app">live demo →</a></sub>
+<sub>`python` · `fastapi` · `xgboost` · `h3` · `next.js` · <a href="https://gridlockl-fugg.vercel.app">live →</a> · <a href="https://github.com/abhishekKokadwar/gridlock">repo →</a></sub>
 
-Built for the Flipkart Gridlock hackathon, aimed at Bangalore Traffic Police: given where and when violations have happened before, predict where enforcement should go next. **Top 5%.**
+**112K parking violations** clustered into **1,196 H3 hotspots**, each ranked with a 0–100 congestion-risk score, then forecast a week ahead with XGBoost at **0.80 Precision@10** across 53 police stations.
 
-The modelling problem was more about the join than the model. Violation records, geospatial zones and time-of-day buckets have to line up before anything downstream means much, and most of the work was getting that feature table honest — deduplicating locations that appear under three spellings, and resisting the urge to read a hotspot into what is really just a place with more reporting. Served as a REST inference API with a Next.js dashboard on top, so the prediction lands somewhere a non-technical user can act on it.
+Most of the work was in the join, not the model. Violation records, geospatial cells and time-of-day buckets have to line up before anything downstream means much — and the discipline is resisting the urge to read a hotspot into what is really just a place with more reporting. SHAP reason chips sit next to each prediction so an officer can see *why* a cell ranked high, and greedy routing turns the ranking into patrol routes for N units. The finding I liked most wasn't a prediction at all: a **5.5% afternoon enforcement blind spot** city-wide, visible only once the data was honest.
+
+Top 5% at the Flipkart Gridlock hackathon.
+
+---
+
+### RTI Copilot — right-to-information assistant
+
+<sub>`next.js` · `llm api` · `vercel` · <a href="https://rti-copilot.vercel.app">live →</a> · <a href="https://github.com/abhishekKokadwar/RTI-copilot">repo →</a></sub>
+
+An RTI filed at the wrong ministry doesn't get rejected — it gets *transferred*, and the statutory clock starts over. That single detail is the product: route the request correctly the first time, or the citizen silently loses a month.
+
+So it routes grievances to the right ministry through an LLM against a curated directory, then rewrites the complaint as a **record request** — the form an office is legally obliged to answer, rather than the form it can file away. Appeals draft themselves when a deadline passes, and the deadline alert lands by email before it does.
+
+---
+
+### SmartReview — domain-adapted sentiment model
+
+<sub>`pytorch` · `huggingface transformers` · <a href="https://huggingface.co/abhishek1005/smartreview-distilroberta-sentiment">model card →</a></sub>
+
+DistilRoBERTa domain-adapted by masked-language-modelling over **61.5K phone reviews**, then fine-tuned for 3-class sentiment — all of it on a single 4GB GPU, which shaped every decision about batch size and sequence length.
+
+**88.2% accuracy and 94.9% positive-class F1** on 8.4K held-out reviews, at roughly 50ms per review. The two-stage approach is the point: adapting the encoder to the vocabulary *before* touching the classification head is what a general-purpose sentiment model doesn't get you.
 
 <img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
 
@@ -251,7 +274,7 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 ![Linux](https://img.shields.io/badge/Linux-0d1117?style=flat-square&logo=linux&logoColor=white&labelColor=0d1117)
 ![AWS](https://img.shields.io/badge/AWS-0d1117?style=flat-square&logo=amazonwebservices&logoColor=white&labelColor=0d1117)
 
-![Next.js](https://img.shields.io/badge/Next.js-0d1117?style=flat-square&logo=nextdotjs&logoColor=white&labelColor=0d1117)
+![Next.js](https://img.shields.io/badge/Next.js-0d1117?style=flat-square&logo=next.js&logoColor=white&labelColor=0d1117)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0d1117?style=flat-square&logo=fastapi&logoColor=white&labelColor=0d1117)
 ![Sanity](https://img.shields.io/badge/Sanity-0d1117?style=flat-square&logo=sanity&logoColor=white&labelColor=0d1117)
 ![Firebase](https://img.shields.io/badge/Firebase-0d1117?style=flat-square&logo=firebase&logoColor=white&labelColor=0d1117)
@@ -270,7 +293,7 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 <br/><br/>
 
-<img width="92%" src="https://streak-stats.demolab.com?user=abhishekKokadwar&hide_border=true&background=0d1117&ring=58a6ff&fire=58a6ff&currStreakLabel=58a6ff&sideLabels=8b949e&dates=6e7681" alt="contribution streak" />
+<img width="92%" src="https://streak-stats.demolab.com?user=abhishekKokadwar&hide_border=true&background=0d1117&stroke=1f2733&ring=58a6ff&fire=58a6ff&currStreakNum=e6edf3&sideNums=e6edf3&currStreakLabel=58a6ff&sideLabels=8b949e&dates=6e7681" alt="contribution streak" />
 
 <br/><br/>
 

@@ -290,7 +290,7 @@
 
     <text class="pr p1" x="34" y="206">$</text>
     <g clip-path="url(#c1)"><text class="cmd" x="56" y="206" textLength="286" lengthAdjust="spacingAndGlyphs">spark-submit stream/aggregate.py</text></g>
-    <g class="o1"><text class="out" x="56" y="230" textLength="512" lengthAdjust="spacingAndGlyphs"><tspan class="ok">ok</tspan>  gridpulse  42 meters &#183; 19 buildings &#183; sub-minute latency</text></g>
+    <g class="o1"><text class="out" x="56" y="230" textLength="512" lengthAdjust="spacingAndGlyphs"><tspan class="ok">ok</tspan>  gridpulse  42 meters &#183; 11.5% MAPE &#183; peak-shaving armed</text></g>
 
     <text class="pr p2" x="34" y="254">$</text>
     <g clip-path="url(#c2)"><text class="cmd" x="56" y="254" textLength="277" lengthAdjust="spacingAndGlyphs">mcp-ztgateway verify ./fs-server</text></g>
