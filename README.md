@@ -183,7 +183,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-oss.svg" width="100%" alt="Open source" />
 
-Five merged upstream, across three CNCF projects. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
+Seven merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
 
 <table>
 <tr>
@@ -196,6 +196,32 @@ Five merged upstream, across three CNCF projects. Small in line count, mostly; t
 <td valign="top">
 
 `ValidateObjects` always fetched the **live** TrainingRuntime, while `NewObjects` reconciles from the per-TrainJob snapshot introduced by KEP-2599. So editing a runtime retroactively broke validation for TrainJobs already reconciled against the old one: remove a volumeMount and resuming a paused job is rejected, even though reconciliation would have used the still-valid snapshot. Delete the runtime — now legal, since KEP-2599 dropped the finalizers — and the job is stuck permanently, reconciling fine but never passing admission. Fixed by resolving updates from the snapshot, falling back to live only for pre-snapshot jobs.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/trainer #4088](https://github.com/kubeflow/trainer/pull/4088)**
+<br/><sub>the error path panicked before it could report the error</sub>
+
+</td>
+<td valign="top">
+
+`Reconcile` handles an unresolvable `runtimeRef` by setting a `Failed` condition, then handed the runtime it had just failed to find to `setTrainJobStatus`, which called a method on a nil interface. controller-runtime recovers the panic and requeues, so the manager stays up, but the unwind happens before the status patch: the condition never reaches the API server, every retry panics at the same point, and the TrainJob sits there with nothing in its status saying why. Admission normally rejects these, which is why it went unnoticed, but a webhook `failurePolicy` of `Ignore` lets one through. Now the status is derived only when a runtime was found, with a test for a branch that had none.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/trainer #3918](https://github.com/kubeflow/trainer/pull/3918)**
+<br/><sub>validation stopped at the first job it decided to skip</sub>
+
+</td>
+<td valign="top">
+
+The Volcano plugin checks each ReplicatedJob's `priorityClassName`, but returned early on a reserved class instead of continuing, so every job listed after it went unvalidated and a bad name surfaced as a scheduling failure rather than at admission. The skip turned out to be unnecessary as well: the reserved classes are ordinary `PriorityClass` objects and resolve like any other. Verifying that in KinD surfaced the larger bug. The controller's ClusterRole never granted read on `priorityclasses`, so the informer cache never synced and the webhook timed out for any TrainJob using a user-defined class.
 
 </td>
 </tr>
