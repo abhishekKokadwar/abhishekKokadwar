@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/header.svg" width="100%" alt="abhishek kokadwar. data pipelines, backend, the boundaries between systems" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/header.svg" width="100%" alt="abhishek kokadwar. data pipelines, backend, the boundaries between systems" />
 
 <br/>
 
@@ -26,9 +26,9 @@ So these days I spend most of my time on two things: data in motion, and trust b
 
 The habit I keep trying to build is measuring things instead of assuming them. Anyone can write "real-time" in a readme. It's a lot harder to say what your watermark actually is, what happens when a packet shows up four minutes late, or what your number looks like when you go back and actually check it.
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-exp.svg" width="100%" alt="Experience" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-exp.svg" width="100%" alt="Experience" />
 
 Two internships, remote, sole developer on both. Both shipped to a live domain — which is a different kind of pressure than a repo nobody deploys.
 
@@ -81,9 +81,9 @@ First time a design decision of mine had users attached to it. That's the part t
 </tr>
 </table>
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-active.svg" width="100%" alt="Currently building" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-active.svg" width="100%" alt="Currently building" />
 
 ### CIDRA — CI debugging and repair agent
 
@@ -93,9 +93,9 @@ A **LangGraph** pipeline that reads a failing GitHub Actions run, works out why,
 
 100% Tier-1/2 diagnosis accuracy across 53+ tests, with **zero false "verified" claims**. The second number is the one I care about: an agent that confidently proposes a broken fix is worse than one that says it doesn't know.
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-done.svg" width="100%" alt="Shipped" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-done.svg" width="100%" alt="Shipped" />
 
 ### GridPulse — real-time campus energy monitoring
 
@@ -107,7 +107,7 @@ The part worth defending is what happens after the aggregate lands. Anomalies ar
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/pipeline.svg" width="100%" alt="Meters into Kafka into Spark Structured Streaming, then forking into a hot path to Postgres and a cold path to date-partitioned storage, with a dashboard reading the hot path." />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/pipeline.svg" width="100%" alt="Meters into Kafka into Spark Structured Streaming, then forking into a hot path to Postgres and a cold path to date-partitioned storage, with a dashboard reading the hot path." />
 
 </div>
 
@@ -123,7 +123,7 @@ An MCP tool server describes its own capabilities. That description is a claim, 
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/gateway.svg" width="100%" alt="Declared capabilities compared against syscalls observed under strace in a locked-down container, compiled into a per-tool seccomp-BPF filter that denies anything outside the declaration at the kernel boundary." />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/gateway.svg" width="100%" alt="Declared capabilities compared against syscalls observed under strace in a locked-down container, compiled into a per-tool seccomp-BPF filter that denies anything outside the declaration at the kernel boundary." />
 
 </div>
 
@@ -163,15 +163,15 @@ DistilRoBERTa domain-adapted by masked-language-modelling over **61.5K phone rev
 
 **88.2% accuracy and 94.9% positive-class F1** on 8.4K held-out reviews, at roughly 50ms per review. The two-stage approach is the point: adapting the encoder to the vocabulary *before* touching the classification head is what a general-purpose sentiment model doesn't get you.
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-dsa.svg" width="100%" alt="DSA" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-dsa.svg" width="100%" alt="DSA" />
 
 The most consistent thing I do — 306 active days, and the reason a cost-per-operation instinct shows up in everything above.
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/dsa.svg" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/dsa.svg" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
 
 <br/>
 
@@ -179,9 +179,9 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 </div>
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-oss.svg" width="100%" alt="Open source" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-oss.svg" width="100%" alt="Open source" />
 
 Nine merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
 
@@ -307,9 +307,9 @@ Two lines. The i18n CLI could not run because its shebang was not first in the f
 
 Also contributing through **GSSoC**, and a published inference model on [HuggingFace Hub](https://huggingface.co/abhishek1005). See [all merged PRs](https://github.com/pulls?q=is%3Apr+author%3AabhishekKokadwar+is%3Amerged).
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-stack.svg" width="100%" alt="Stack" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-stack.svg" width="100%" alt="Stack" />
 
 <div align="center">
 
@@ -335,13 +335,13 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 </div>
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/rule.svg" width="100%" alt="" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/rule.svg" width="100%" alt="" />
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-lately.svg" width="100%" alt="Lately" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-lately.svg" width="100%" alt="Lately" />
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/github.svg" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/github.svg" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
 
 <br/><br/>
 
@@ -350,8 +350,8 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 <br/><br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/output/github-contribution-grid-snake-dark.svg" />
-  <img width="100%" src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/output/github-contribution-grid-snake.svg" alt="contribution snake" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@output/github-contribution-grid-snake-dark.svg" />
+  <img width="100%" src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@output/github-contribution-grid-snake.svg" alt="contribution snake" />
 </picture>
 
 <br/><br/>
