@@ -183,7 +183,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <img src="https://raw.githubusercontent.com/abhishekKokadwar/abhishekKokadwar/main/assets/h-oss.svg" width="100%" alt="Open source" />
 
-Seven merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
+Nine merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
 
 <table>
 <tr>
@@ -241,6 +241,19 @@ The server set `_meta.next` even when the response reported blockers, so a clien
 <tr>
 <td valign="top">
 
+**[kubeflow/mcp-server #296](https://github.com/kubeflow/mcp-server/pull/296)**
+<br/><sub>a preview advertised the step after an action that never ran</sub>
+
+</td>
+<td valign="top">
+
+The same disagreement as #237, one gate over. With `confirmed=False` a mutating tool returns a preview and sends nothing to the cluster, but `_inject_meta` attached the post-action hint anyway: monitor a job that does not exist, confirm a delete that has not happened. Now withheld for both preview shapes. I left out the obvious replacement, a hint pointing at `confirmed=True`, on purpose. The gate exists so a person approves the action, and a hint aimed straight at the confirm call makes that the easiest step to skip.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
 **[kubeflow/mcp-server #236](https://github.com/kubeflow/mcp-server/pull/236)**
 <br/><sub>unvalidated runtime names in platform tools</sub>
 
@@ -248,6 +261,19 @@ The server set `_meta.next` even when the response reported blockers, so a clien
 <td valign="top">
 
 Runtime names reached the platform runtime tools unvalidated. 188 lines, nearly all of it the validation and its tests.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/mcp-server #290](https://github.com/kubeflow/mcp-server/pull/290)**
+<br/><sub>the test slept 60 ms and the clock read 47</sub>
+
+</td>
+<td valign="top">
+
+Two resilience tests waited with a real `time.sleep()` and trusted `time.monotonic()` to measure it. On Windows that clock ticks every 15.6 ms, coarser than the margin either test allowed, so a breaker stayed open about 12% of the time and a token bucket refilled nothing about 31% of the time, over 400 runs each. CI never saw it because every workflow runs on Ubuntu. The tests now advance a patched clock by hand instead of sleeping, and the refill test asserts the bucket is empty first, so it can no longer pass without a refill happening.
 
 </td>
 </tr>
