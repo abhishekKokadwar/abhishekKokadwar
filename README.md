@@ -183,7 +183,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-oss.svg" width="100%" alt="Open source" />
 
-Nine merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
+Eleven merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
 
 <table>
 <tr>
@@ -222,6 +222,19 @@ Nine merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](h
 <td valign="top">
 
 The Volcano plugin checks each ReplicatedJob's `priorityClassName`, but returned early on a reserved class instead of continuing, so every job listed after it went unvalidated and a bad name surfaced as a scheduling failure rather than at admission. The skip turned out to be unnecessary as well: the reserved classes are ordinary `PriorityClass` objects and resolve like any other. Verifying that in KinD surfaced the larger bug. The controller's ClusterRole never granted read on `priorityclasses`, so the informer cache never synced and the webhook timed out for any TrainJob using a user-defined class.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/trainer #4191](https://github.com/kubeflow/trainer/pull/4191)**
+<br/><sub>the test said the manifests were stale; the checkout was</sub>
+
+</td>
+<td valign="top">
+
+`TestPatchGeneratedManifests` failed for all four CRDs on a Windows checkout and told the contributor to run `make manifests`, which could never help. Git's Windows default checks the files out with CRLF, `Patch` re-encodes with LF, and a byte-for-byte comparison can't match whatever the content. Fixed with a repo-wide `* text=auto eol=lf`, the rule kubernetes/kubernetes uses, rather than by stripping CR in the test: the test is a byte-exact guard on generated files and was doing its job, so loosening it for everyone to hide a difference that exists only in some working trees was the wrong trade.
 
 </td>
 </tr>
@@ -274,6 +287,19 @@ Runtime names reached the platform runtime tools unvalidated. 188 lines, nearly 
 <td valign="top">
 
 Two resilience tests waited with a real `time.sleep()` and trusted `time.monotonic()` to measure it. On Windows that clock ticks every 15.6 ms, coarser than the margin either test allowed, so a breaker stayed open about 12% of the time and a token bucket refilled nothing about 31% of the time, over 400 runs each. CI never saw it because every workflow runs on Ubuntu. The tests now advance a patched clock by hand instead of sleeping, and the refill test asserts the bucket is empty first, so it can no longer pass without a refill happening.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/mcp-server #324](https://github.com/kubeflow/mcp-server/pull/324)**
+<br/><sub>the test built a fake home and then read the real one</sub>
+
+</td>
+<td valign="top">
+
+One line. The default-kubeconfig test creates a fake home and points `HOME` at it, but on Windows `os.path.expanduser` reads `USERPROFILE` instead, so the code under test looked in the real profile. With no kubeconfig there the test failed; with one there it passed, by finding the developer's own file. The passing case is the worse of the two.
 
 </td>
 </tr>
