@@ -171,7 +171,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/dsa.svg" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/dsa.svg?v=e9d224df" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
 
 <br/>
 
@@ -183,7 +183,13 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-oss.svg" width="100%" alt="Open source" />
 
-Fourteen merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
+<div align="center">
+
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/oss.svg?v=878bd612" width="92%" alt="Merged upstream pull requests, issues closed, the repos they landed in, and the most recent merges. Regenerated from the GitHub API." />
+
+</div>
+
+Merged upstream across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
 
 <table>
 <tr>
@@ -308,7 +314,7 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/github.svg" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/github.svg?v=553aee79" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
 
 <br/><br/>
 

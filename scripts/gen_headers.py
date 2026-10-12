@@ -36,7 +36,7 @@ HEADERS = [
     ("h-active", "currently building",  "cidra"),
     ("h-done",   "shipped",             "five live · links below run"),
     ("h-exp",    "experience",          "two internships, sole developer"),
-    ("h-oss",    "open source",         "14 merged \u00b7 kubeflow org member"),
+    ("h-oss",    "open source",         "kubeflow org member \u00b7 card below is live"),
     ("h-stack",  "stack",               "what i reach for"),
     ("h-dsa",    "dsa",                 "859 solved · 306 active days"),
     ("h-lately", "lately",              "contribution activity"),

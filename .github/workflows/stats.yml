@@ -2,7 +2,7 @@ name: Refresh stats
 
 on:
   schedule:
-    - cron: "30 1 * * *"   # 01:30 UTC daily
+    - cron: "17 */3 * * *"   # every 3 hours, so a merged PR shows up the same day
   workflow_dispatch:
 
 permissions:
@@ -26,13 +26,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - run: python scripts/gen_oss_svg.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: python scripts/bust_cache.py
+
       - name: Commit if changed
         run: |
-          if git diff --quiet -- assets/dsa.svg assets/github.svg; then
+          if git diff --quiet -- assets/dsa.svg assets/github.svg assets/oss.svg README.md; then
             echo "no change"
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Refresh stats" -- assets/dsa.svg assets/github.svg
+          git commit -m "Refresh stats" -- assets/dsa.svg assets/github.svg assets/oss.svg README.md
           git push

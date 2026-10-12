@@ -24,7 +24,9 @@ USER = "abhishekKokadwar"
 
 # Owners whose repos are not "upstream": this account, and the collaborator
 # repos where a merge is self-approved rather than reviewed by a project.
-UPSTREAM_EXCLUDE = f"-user:abhishekKokadwar -user:nabrahma -repo:driverCore/TruthLens"
+# kubeflow/internal-acls is the org-membership request, not a contribution.
+UPSTREAM_EXCLUDE = ("-user:abhishekKokadwar -user:nabrahma -repo:driverCore/TruthLens"
+                    " -repo:kubeflow/internal-acls")
 
 
 def get(url, token):
