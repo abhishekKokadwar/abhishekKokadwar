@@ -183,7 +183,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/h-oss.svg" width="100%" alt="Open source" />
 
-Eleven merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
+Fourteen merged upstream, across Kubeflow and Karmada, and a [Kubeflow org member](https://github.com/kubeflow/internal-acls/pull/979) since September 2026. Small in line count, mostly; the interesting part is that each one was a disagreement between two pieces of a system that each looked correct alone.
 
 <table>
 <tr>
@@ -241,6 +241,32 @@ The Volcano plugin checks each ReplicatedJob's `priorityClassName`, but returned
 <tr>
 <td valign="top">
 
+**[kubeflow/pipelines #14753](https://github.com/kubeflow/pipelines/pull/14753)**
+<br/><sub>page two began with the same item as page one, and the tests agreed</sub>
+
+</td>
+<td valign="top">
+
+With pipelines stored in Kubernetes, paging through `ListPipelines` could repeat items, skip them, or hand back the first page again. The store sorted by the requested field only, and the cache builds its list by ranging over a Go map, so objects with equal sort values came back in a different order on every call. The default sort is a creation timestamp with one-second precision, which makes ties easy to hit. And if the object the page token named had been deleted in the meantime, the lookup found nothing and the page silently restarted from index 0. Both list functions now share one helper that breaks ties by UUID and resumes at the first item at or after the token's position, the way the SQL stores already did. Four existing assertions had expected the duplicate.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/pipelines #14739](https://github.com/kubeflow/pipelines/pull/14739)**
+<br/><sub>the fake said yes to everything, so the test never ran its own case</sub>
+
+</td>
+<td valign="top">
+
+If a recurring run's ScheduledWorkflow was gone from the cluster (deleted with `kubectl`, or the database restored onto another cluster), disabling the run and archiving its experiment both returned Internal Server Error, every time, leaving the experiment stuck. An earlier fix had removed the existence check before the patch but left the error from `Patch` itself fatal. A missing ScheduledWorkflow cannot trigger runs, so disabling now logs the NotFound and proceeds; enabling still fails, as it should. The reason this survived: the fake client's `Patch` returned `nil, nil` no matter what, so `TestDisableJob_CustomResourceNotFound` passed without ever exercising the case in its name. The fake now answers like the real API server.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
 **[kubeflow/mcp-server #237](https://github.com/kubeflow/mcp-server/pull/237)**
 <br/><sub>a blocked response still advertised a next step</sub>
 
@@ -274,6 +300,19 @@ The same disagreement as #237, one gate over. With `confirmed=False` a mutating 
 <td valign="top">
 
 Runtime names reached the platform runtime tools unvalidated. 188 lines, nearly all of it the validation and its tests.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+**[kubeflow/mcp-server #344](https://github.com/kubeflow/mcp-server/pull/344)**
+<br/><sub>with no allowlist, any string was a namespace</sub>
+
+</td>
+<td valign="top">
+
+A caller-supplied namespace was checked only against the namespace policy, and with no allowlist configured the policy accepts anything. So `Bad_NS!` reached the Kubernetes API, the agent was told the job was not found, and nothing in that answer suggested the namespace was the problem. A confirmed delete went as far as sending the DELETE. The format check now lives in the shared helper every namespaced tool already calls, rather than in seven tools separately, which also closed the same gap in three submission tools the issue had not listed. One parametrized test covers every tool with a `namespace` parameter and asserts no API call is made, so a new tool is picked up automatically.
 
 </td>
 </tr>
