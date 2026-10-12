@@ -228,19 +228,6 @@ The Volcano plugin checks each ReplicatedJob's `priorityClassName`, but returned
 <tr>
 <td valign="top">
 
-**[kubeflow/trainer #4191](https://github.com/kubeflow/trainer/pull/4191)**
-<br/><sub>the test said the manifests were stale; the checkout was</sub>
-
-</td>
-<td valign="top">
-
-`TestPatchGeneratedManifests` failed for all four CRDs on a Windows checkout and told the contributor to run `make manifests`, which could never help. Git's Windows default checks the files out with CRLF, `Patch` re-encodes with LF, and a byte-for-byte comparison can't match whatever the content. Fixed with a repo-wide `* text=auto eol=lf`, the rule kubernetes/kubernetes uses, rather than by stripping CR in the test: the test is a byte-exact guard on generated files and was doing its job, so loosening it for everyone to hide a difference that exists only in some working trees was the wrong trade.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
 **[kubeflow/pipelines #14753](https://github.com/kubeflow/pipelines/pull/14753)**
 <br/><sub>page two began with the same item as page one, and the tests agreed</sub>
 
@@ -319,26 +306,13 @@ A caller-supplied namespace was checked only against the namespace policy, and w
 <tr>
 <td valign="top">
 
-**[kubeflow/mcp-server #290](https://github.com/kubeflow/mcp-server/pull/290)**
-<br/><sub>the test slept 60 ms and the clock read 47</sub>
+**Windows-only test failures**
+<br/><sub><a href="https://github.com/kubeflow/mcp-server/pull/290">mcp-server #290</a> · <a href="https://github.com/kubeflow/mcp-server/pull/324">#324</a> · <a href="https://github.com/kubeflow/trainer/pull/4191">trainer #4191</a></sub>
 
 </td>
 <td valign="top">
 
-Two resilience tests waited with a real `time.sleep()` and trusted `time.monotonic()` to measure it. On Windows that clock ticks every 15.6 ms, coarser than the margin either test allowed, so a breaker stayed open about 12% of the time and a token bucket refilled nothing about 31% of the time, over 400 runs each. CI never saw it because every workflow runs on Ubuntu. The tests now advance a patched clock by hand instead of sleeping, and the refill test asserts the bucket is empty first, so it can no longer pass without a refill happening.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-**[kubeflow/mcp-server #324](https://github.com/kubeflow/mcp-server/pull/324)**
-<br/><sub>the test built a fake home and then read the real one</sub>
-
-</td>
-<td valign="top">
-
-One line. The default-kubeconfig test creates a fake home and points `HOME` at it, but on Windows `os.path.expanduser` reads `USERPROFILE` instead, so the code under test looked in the real profile. With no kubeconfig there the test failed; with one there it passed, by finding the developer's own file. The passing case is the worse of the two.
+Three tests that failed only on Windows, which CI never saw because every workflow runs on Ubuntu. Two resilience tests slept 60 ms and trusted a clock that ticks every 15.6 ms to measure it, failing about 12% and 31% of runs; they now advance a patched clock by hand. A kubeconfig test built a fake home and pointed `HOME` at it, but `expanduser` on Windows reads `USERPROFILE`, so it passed only by finding the developer's own file. And a byte-exact guard on generated CRDs told contributors to run `make manifests` when the real difference was CRLF at checkout, fixed with a repo-wide `eol=lf` rule rather than by loosening the guard.
 
 </td>
 </tr>
