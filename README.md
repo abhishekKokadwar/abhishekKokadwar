@@ -171,7 +171,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/dsa.svg?v=e9d224df" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/dsa.svg?v=efab4967" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
 
 <br/>
 
@@ -314,7 +314,7 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/github.svg?v=553aee79" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/github.svg?v=ab029520" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
 
 <br/><br/>
 
