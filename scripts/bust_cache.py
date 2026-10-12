@@ -19,7 +19,10 @@ def main():
     readme = ROOT / "README.md"
     text = readme.read_text(encoding="utf-8")
     for name in CARDS:
-        digest = hashlib.sha1((ROOT / "assets" / name).read_bytes()).hexdigest()[:8]
+        # Hash with LF endings whatever the checkout used, so a Windows
+        # working tree and the Linux runner agree on the stamp.
+        body = (ROOT / "assets" / name).read_bytes().replace(b"\r\n", b"\n")
+        digest = hashlib.sha1(body).hexdigest()[:8]
         text = re.sub(rf'(assets/{re.escape(name)})(\?v=[0-9a-f]+)?"', rf'\1?v={digest}"', text)
     readme.write_text(text, encoding="utf-8", newline="\n")
 
