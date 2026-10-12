@@ -254,45 +254,6 @@ If a recurring run's ScheduledWorkflow was gone from the cluster (deleted with `
 <tr>
 <td valign="top">
 
-**[kubeflow/mcp-server #237](https://github.com/kubeflow/mcp-server/pull/237)**
-<br/><sub>a blocked response still advertised a next step</sub>
-
-</td>
-<td valign="top">
-
-The server set `_meta.next` even when the response reported blockers, so a client could be told what to do next by a call that had not actually succeeded. Withholding it makes the failure legible to the agent instead of inviting it to continue.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-**[kubeflow/mcp-server #296](https://github.com/kubeflow/mcp-server/pull/296)**
-<br/><sub>a preview advertised the step after an action that never ran</sub>
-
-</td>
-<td valign="top">
-
-The same disagreement as #237, one gate over. With `confirmed=False` a mutating tool returns a preview and sends nothing to the cluster, but `_inject_meta` attached the post-action hint anyway: monitor a job that does not exist, confirm a delete that has not happened. Now withheld for both preview shapes. I left out the obvious replacement, a hint pointing at `confirmed=True`, on purpose. The gate exists so a person approves the action, and a hint aimed straight at the confirm call makes that the easiest step to skip.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-**[kubeflow/mcp-server #236](https://github.com/kubeflow/mcp-server/pull/236)**
-<br/><sub>unvalidated runtime names in platform tools</sub>
-
-</td>
-<td valign="top">
-
-Runtime names reached the platform runtime tools unvalidated. 188 lines, nearly all of it the validation and its tests.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
 **[kubeflow/mcp-server #344](https://github.com/kubeflow/mcp-server/pull/344)**
 <br/><sub>with no allowlist, any string was a namespace</sub>
 
@@ -303,46 +264,13 @@ A caller-supplied namespace was checked only against the namespace policy, and w
 
 </td>
 </tr>
-<tr>
-<td valign="top">
-
-**Windows-only test failures**
-<br/><sub><a href="https://github.com/kubeflow/mcp-server/pull/290">mcp-server #290</a> · <a href="https://github.com/kubeflow/mcp-server/pull/324">#324</a> · <a href="https://github.com/kubeflow/trainer/pull/4191">trainer #4191</a></sub>
-
-</td>
-<td valign="top">
-
-Three tests that failed only on Windows, which CI never saw because every workflow runs on Ubuntu. Two resilience tests slept 60 ms and trusted a clock that ticks every 15.6 ms to measure it, failing about 12% and 31% of runs; they now advance a patched clock by hand. A kubeconfig test built a fake home and pointed `HOME` at it, but `expanduser` on Windows reads `USERPROFILE`, so it passed only by finding the developer's own file. And a byte-exact guard on generated CRDs told contributors to run `make manifests` when the real difference was CRLF at checkout, fixed with a repo-wide `eol=lf` rule rather than by loosening the guard.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-**[karmada-io/dashboard #700](https://github.com/karmada-io/dashboard/pull/700)**
-<br/><sub>TypeScript strictness in member-cluster services</sub>
-
-</td>
-<td valign="top">
-
-Tightened types across 7 files in the member-cluster service layer — the kind of change that finds bugs by refusing to compile rather than by failing at runtime.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-**[karmada-io/dashboard #702](https://github.com/karmada-io/dashboard/pull/702)**
-<br/><sub>a shebang on the wrong line</sub>
-
-</td>
-<td valign="top">
-
-Two lines. The i18n CLI could not run because its shebang was not first in the file. Favourite kind of fix: the bug is obvious the moment you see it, and invisible until then.
-
-</td>
-</tr>
 </table>
+
+Smaller fixes, one line each:
+
+- **kubeflow/mcp-server** · [#237](https://github.com/kubeflow/mcp-server/pull/237) and [#296](https://github.com/kubeflow/mcp-server/pull/296): blocked responses and confirm-gate previews no longer advertise a next step for an action that never ran · [#236](https://github.com/kubeflow/mcp-server/pull/236): runtime names validated in the platform runtime tools
+- **Windows-only test failures** · [mcp-server #290](https://github.com/kubeflow/mcp-server/pull/290): tests that slept 60 ms and trusted a 15.6 ms clock to measure it · [#324](https://github.com/kubeflow/mcp-server/pull/324): a test that built a fake home and read the real one · [trainer #4191](https://github.com/kubeflow/trainer/pull/4191): a "stale manifests" failure that was CRLF at checkout
+- **karmada-io/dashboard** · [#700](https://github.com/karmada-io/dashboard/pull/700): TypeScript strictness across the member-cluster services · [#702](https://github.com/karmada-io/dashboard/pull/702): a shebang on the wrong line, so the i18n CLI could not run
 
 Also contributing through **GSSoC**, and a published inference model on [HuggingFace Hub](https://huggingface.co/abhishek1005). See [all merged PRs](https://github.com/pulls?q=is%3Apr+author%3AabhishekKokadwar+is%3Amerged).
 
