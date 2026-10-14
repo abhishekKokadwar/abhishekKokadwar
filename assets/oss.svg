@@ -23,9 +23,9 @@
   <rect class="grow b0" x="36" y="94" width="270.0" height="6" rx="3" fill="#58a6ff"/>
 
   <text x="36" y="128" fill="#6e7681" font-size="11" letter-spacing="1.5">ISSUES CLOSED</text>
-  <text x="864" y="128" fill="#e6edf3" font-size="12" font-weight="700" text-anchor="end">13 closed / 35 filed</text>
+  <text x="864" y="128" fill="#e6edf3" font-size="12" font-weight="700" text-anchor="end">13 closed / 37 filed</text>
   <rect x="36" y="138" width="828" height="6" rx="3" fill="#161d27"/>
-  <rect class="grow b1" x="36" y="138" width="307.5" height="6" rx="3" fill="#58a6ff"/>
+  <rect class="grow b1" x="36" y="138" width="290.9" height="6" rx="3" fill="#58a6ff"/>
 
   <text x="36" y="172" fill="#6e7681" font-size="11" letter-spacing="1.5">REPOS LANDED IN</text>
   <text x="864" y="172" fill="#e6edf3" font-size="12" font-weight="700" text-anchor="end">5 upstream repos</text>
