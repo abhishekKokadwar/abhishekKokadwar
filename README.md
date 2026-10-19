@@ -185,7 +185,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/oss.svg?v=744e34f3" width="92%" alt="Merged upstream pull requests, issues closed, the repos they landed in, and the most recent merges. Regenerated from the GitHub API." />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/oss.svg?v=db63cc19" width="92%" alt="Merged upstream pull requests, issues closed, the repos they landed in, and the most recent merges. Regenerated from the GitHub API." />
 
 </div>
 
@@ -314,7 +314,7 @@ Also contributing through **GSSoC**, and a published inference model on [Hugging
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/github.svg?v=bb4bc087" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/github.svg?v=302f94df" width="92%" alt="GitHub contributions, commits, merged PRs, public repos and stars, with a language share bar" />
 
 <br/><br/>
 
