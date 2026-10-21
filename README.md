@@ -274,7 +274,7 @@ A caller-supplied namespace was checked only against the namespace policy, and w
 
 Smaller fixes, one line each:
 
-- **kubeflow/mcp-server** · [#237](https://github.com/kubeflow/mcp-server/pull/237) and [#296](https://github.com/kubeflow/mcp-server/pull/296): blocked responses and confirm-gate previews no longer advertise a next step for an action that never ran · [#236](https://github.com/kubeflow/mcp-server/pull/236): runtime names validated in the platform runtime tools
+- **kubeflow/mcp-server** · [#237](https://github.com/kubeflow/mcp-server/pull/237) and [#296](https://github.com/kubeflow/mcp-server/pull/296): blocked responses and confirm-gate previews no longer advertise a next step for an action that never ran · [#236](https://github.com/kubeflow/mcp-server/pull/236): runtime names validated in the platform runtime tools · [#411](https://github.com/kubeflow/mcp-server/pull/411) and [#426](https://github.com/kubeflow/mcp-server/pull/426): an unknown persona or a broken policy file now stops the server with a one-line error instead of a traceback
 - **Windows-only test failures** · [mcp-server #290](https://github.com/kubeflow/mcp-server/pull/290): tests that slept 60 ms and trusted a 15.6 ms clock to measure it · [#324](https://github.com/kubeflow/mcp-server/pull/324): a test that built a fake home and read the real one · [trainer #4191](https://github.com/kubeflow/trainer/pull/4191): a "stale manifests" failure that was CRLF at checkout
 - **karmada-io/dashboard** · [#700](https://github.com/karmada-io/dashboard/pull/700): TypeScript strictness across the member-cluster services · [#702](https://github.com/karmada-io/dashboard/pull/702): a shebang on the wrong line, so the i18n CLI could not run
 
