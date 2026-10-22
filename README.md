@@ -171,7 +171,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/dsa.svg?v=2caf5c6e" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/dsa.svg?v=928d352c" width="92%" alt="859 solved, LeetCode contest rating 1640, 29 contests, 273 easy / 399 medium / 55 hard" />
 
 <br/>
 
@@ -185,7 +185,7 @@ The most consistent thing I do — 306 active days, and the reason a cost-per-op
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/oss.svg?v=78d7f6d8" width="92%" alt="Merged upstream pull requests, issues closed, the repos they landed in, and the most recent merges. Regenerated from the GitHub API." />
+<img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/oss.svg?v=9b3fbe4a" width="92%" alt="Merged upstream pull requests, issues closed, the repos they landed in, and the most recent merges. Regenerated from the GitHub API." />
 
 </div>
 
