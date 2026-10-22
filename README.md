@@ -89,9 +89,9 @@ First time a design decision of mine had users attached to it. That's the part t
 
 <sub>`python` · `langgraph` · `claude api` · `docker` · `pydantic` · <a href="https://github.com/abhishekKokadwar/CIDRA">repo →</a></sub>
 
-A **LangGraph** pipeline that reads a failing GitHub Actions run, works out why, and then — the part that matters — reproduces the failure in a sandboxed Docker container and verifies the fix actually passes before proposing it. Model output is Pydantic-validated with bounded retry, so a malformed response is a retry rather than a crash.
+A **LangGraph** pipeline (20 nodes) that reads a failing GitHub Actions run, works out why, and then — the part that matters — reproduces the failure in a network-isolated Docker container and proposes a fix only after it passes there with no other test breaking. A static audit gate refuses patches that make a test pass by cheating: deleted or skipped tests, weakened asserts, deleted or swallowed errors.
 
-100% Tier-1/2 diagnosis accuracy across 53+ tests, with **zero false "verified" claims**. The second number is the one I care about: an agent that confidently proposes a broken fix is worse than one that says it doesn't know.
+Measured on **40 real bugs from BugsInPy** with a small model (claude-haiku-4-5, $0.65 for the whole run): 32/40 diagnosed correctly, all 16 out-of-scope bugs declined, 4 of 24 fixable bugs fixed. Every fix it calls verified is judged afterwards by held-out tests the model never saw — and **1 of those 4 was still wrong** (4 of 9 in the run before, which is what drove the audit rules). That number is the one I care about: an agent that confidently proposes a broken fix is worse than one that says it doesn't know. <a href="https://github.com/abhishekKokadwar/CIDRA#measured-results">results and method →</a>
 
 <img src="https://cdn.jsdelivr.net/gh/abhishekKokadwar/abhishekKokadwar@main/assets/rule.svg" width="100%" alt="" />
 
