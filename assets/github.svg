@@ -15,17 +15,18 @@
   <text x="388" y="100" fill="#e6edf3" font-size="30" font-weight="700">43</text>
   <text x="388" y="120" fill="#6e7681" font-size="11">issues filed</text>
 
-  <text x="564" y="100" fill="#e6edf3" font-size="30" font-weight="700">30</text>
+  <text x="564" y="100" fill="#e6edf3" font-size="30" font-weight="700">31</text>
   <text x="564" y="120" fill="#6e7681" font-size="11">public repos</text>
 
   <text x="740" y="100" fill="#e6edf3" font-size="30" font-weight="700">3</text>
   <text x="740" y="120" fill="#6e7681" font-size="11">stars earned</text>
 
   <line x1="36" y1="138" x2="864" y2="138" stroke="#1f2733"/>
-  <rect x="36.0" y="150" width="252.8" height="6" rx="3" fill="#3572A5"/>
-  <rect x="290.8" y="150" width="252.8" height="6" rx="3" fill="#3178c6"/>
-  <rect x="545.5" y="150" width="125.4" height="6" rx="3" fill="#e34c26"/>
-  <rect x="672.9" y="150" width="125.4" height="6" rx="3" fill="#DA5B0B"/>
-  <rect x="800.3" y="150" width="61.7" height="6" rx="3" fill="#f1e05a"/>
-  <text x="36" y="172" fill="#6e7681" font-size="10">Python 8   TypeScript 8   HTML 4   Jupyter Notebook 4   JavaScript 2</text>
+  <rect x="36.0" y="150" width="243.3" height="6" rx="3" fill="#3572A5"/>
+  <rect x="281.3" y="150" width="243.3" height="6" rx="3" fill="#3178c6"/>
+  <rect x="526.7" y="150" width="120.7" height="6" rx="3" fill="#e34c26"/>
+  <rect x="649.3" y="150" width="120.7" height="6" rx="3" fill="#DA5B0B"/>
+  <rect x="772.0" y="150" width="59.3" height="6" rx="3" fill="#f1e05a"/>
+  <rect x="833.3" y="150" width="28.7" height="6" rx="3" fill="#89e051"/>
+  <text x="36" y="172" fill="#6e7681" font-size="10">Python 8   TypeScript 8   HTML 4   Jupyter Notebook 4   JavaScript 2   Shell 1</text>
 </svg>
